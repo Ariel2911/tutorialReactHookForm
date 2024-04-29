@@ -1,7 +1,10 @@
 {
   "name": "tutorialreacthookform",
+  "author": "Ariel A Barrios",
   "private": true,
-  "version": "0.0.0",
+  "license": "MIT",
+  "description": "React Hook Form practice",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -10,6 +13,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@hookform/error-message": "^2.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.51.3"

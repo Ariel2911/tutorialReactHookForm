@@ -1,10 +1,22 @@
 import { useForm } from 'react-hook-form';
+import { ErrorMessage } from '@hookform/error-message';
 
 import './App.css';
 
+interface FormInputs {
+  name: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+  birddate: string;
+  country: string;
+  picture: string;
+  terms: string;
+}
+
 function App() {
 
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, formState: { errors } } = useForm<FormInputs>();
 
   const onSubmit = handleSubmit((data) => {
     console.log(data)
@@ -17,7 +29,26 @@ function App() {
       <form className='card' onSubmit={onSubmit}>
 
         <label htmlFor='name'>Name</label>
-        <input type='text' {...register('name')} />
+        <input
+          type='text'
+          {...register('name', {
+            required: 'Nane is required',
+            minLength: {
+              value: 3,
+              message: 'Name must be at least 3 characters'
+            },
+            maxLength: {
+              value: 20,
+              message: 'Name must not b more than 20 characters'
+            }
+          })}
+        />
+        <ErrorMessage
+          errors={errors}
+          name="name"
+          render={({ message }) => <span>{message}</span>}
+        />
+
 
         <label htmlFor='emain'>Email</label>
         <input type='email' {...register('email')} />
