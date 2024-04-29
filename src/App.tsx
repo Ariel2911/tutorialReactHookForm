@@ -68,7 +68,17 @@ function App() {
         />
 
         <label htmlFor='password'>Password</label>
-        <input type='password' {...register('password')} />
+        <input
+          type='password'
+          {...register('password', {
+            required: 'Password is required'
+          })}
+        />
+        <ErrorMessage
+          errors={errors}
+          name="password"
+          render={({ message }) => <span>{message}</span>}
+        />
 
         <label htmlFor='confirmPassword'>Confirm password</label>
         <input type='password' {...register('confirmPassword')} />
