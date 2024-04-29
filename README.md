@@ -14,13 +14,13 @@ El proyecto fue creado con Vite JS
 1. Clonar el repositorio
 
 ```bash
-$ git clone https://github.com/Ariel2911/bootcamp-nest-practica01.git
+$ git clone https://github.com/Ariel2911/tutorialReactHookForm.git
 ```
 
 2. Navegar al directorio
 
 ```bash
-$ cd bootcamp-nest-practica01
+$ cd tutorialReactHookForm
 ```
 
 3. Instalar dependencias
