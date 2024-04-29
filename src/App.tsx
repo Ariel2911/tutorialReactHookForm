@@ -17,10 +17,14 @@ interface FormInputs {
 
 function App() {
 
-  const { register, handleSubmit, formState: { errors }, watch } = useForm<FormInputs>();
+  const { register, handleSubmit, formState: { errors }, watch, reset } = useForm<FormInputs>();
 
   const onSubmit = handleSubmit((data) => {
     console.log(data)
+
+    alert('Sending data')
+
+    reset()
   })
 
   return (
