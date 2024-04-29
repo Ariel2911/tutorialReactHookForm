@@ -16,7 +16,7 @@ interface FormInputs {
 
 function App() {
 
-  const { register, handleSubmit, formState: { errors } } = useForm<FormInputs>();
+  const { register, handleSubmit, formState: { errors }, watch } = useForm<FormInputs>();
 
   const onSubmit = handleSubmit((data) => {
     console.log(data)
@@ -80,7 +80,18 @@ function App() {
         />
 
         <label htmlFor='confirmPassword'>Confirm password</label>
-        <input type='password' {...register('confirmPassword')} />
+        <input
+          type='password'
+          {...register('confirmPassword', {
+            required: 'Password confiramtion is required',
+            validate: value => value === watch('password') || 'Does not match password'
+          })}
+        />
+        <ErrorMessage
+          errors={errors}
+          name="confirmPassword"
+          render={({ message }) => <span>{message}</span>}
+        />
 
         <label htmlFor='birddate'>Birddate</label>
         <input
