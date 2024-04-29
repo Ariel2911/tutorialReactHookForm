@@ -10,6 +10,7 @@ interface FormInputs {
   confirmPassword: string;
   birddate: string;
   country: string;
+  province: string;
   picture: string;
   terms: string;
 }
@@ -126,6 +127,25 @@ function App() {
           <option value='co'>Colombia</option>
           <option value='ar'>Argentina</option>
         </select>
+
+        {
+          watch('country') == 'ar' && (
+            <span>
+              <input
+                type='text'
+                placeholder='Province'
+                {...register('province', {
+                  required: 'Province is required'
+                })}
+              />
+              <ErrorMessage
+                errors={errors}
+                name="province"
+                render={({ message }) => <span>{message}</span>}
+              />
+            </span>
+          )
+        }
 
         <label htmlFor='picture'>Profile picture</label>
         <input type='file' {...register('picture')} />
