@@ -151,7 +151,17 @@ function App() {
         <input type='file' {...register('picture')} />
 
         <label htmlFor='terms'>I accept terms and conditions</label>
-        <input type='checkbox' {...register('terms')} />
+        <input
+          type='checkbox'
+          {...register('terms', {
+            required: 'you must accept the terms and conditions'
+          })}
+        />
+        <ErrorMessage
+          errors={errors}
+          name="terms"
+          render={({ message }) => <span>{message}</span>}
+        />
 
         <button>Send</button>
 
