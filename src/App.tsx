@@ -1,6 +1,10 @@
-import './App.css'
+import { useForm } from 'react-hook-form';
+
+import './App.css';
 
 function App() {
+
+  const { register } = useForm()
 
   return (
     <div>
@@ -9,32 +13,32 @@ function App() {
       <form className='card'>
 
         <label htmlFor='name'>Name</label>
-        <input type='text' />
+        <input type='text' {...register('name')} />
 
         <label htmlFor='emain'>Email</label>
-        <input type='email' />
+        <input type='email' {...register('email')} />
 
         <label htmlFor='password'>Password</label>
-        <input type='password' />
+        <input type='password' {...register('password')} />
 
         <label htmlFor='confirmPassword'>Confirm password</label>
-        <input type='password' />
+        <input type='password' {...register('confirmPassword')} />
 
         <label htmlFor='birddate'>Birddate</label>
-        <input type='date' />
+        <input type='date' {...register('birddate')} />
 
         <label htmlFor='country'>Country</label>
-        <select>
+        <select {...register('country')}>
           <option value='mx'>México</option>
           <option value='co'>Colombia</option>
           <option value='ar'>Argentina</option>
         </select>
 
-        <label htmlFor='file'>Profile picture</label>
-        <input type='file' />
+        <label htmlFor='picture'>Profile picture</label>
+        <input type='file' {...register('picture')} />
 
         <label htmlFor='terms'>I accept terms and conditions</label>
-        <input type='checkbox' />
+        <input type='checkbox' {...register('terms')} />
 
         <button>Send</button>
 
