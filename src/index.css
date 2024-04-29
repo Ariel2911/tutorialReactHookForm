@@ -31,6 +31,12 @@ label {
   margin-top: 1rem;
 }
 
+span {
+  display: block;
+  color: tomato;
+  font-size: x-small;
+}
+
 button {
   display: block;
   margin: 1rem auto;
