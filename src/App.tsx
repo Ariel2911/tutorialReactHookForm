@@ -51,7 +51,21 @@ function App() {
 
 
         <label htmlFor='emain'>Email</label>
-        <input type='email' {...register('email')} />
+        <input
+          type='email'
+          {...register('email', {
+            required: 'Email is required',
+            pattern: {
+              value: /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
+              message: 'Email is not valid'
+            }
+          })}
+        />
+        <ErrorMessage
+          errors={errors}
+          name="email"
+          render={({ message }) => <span>{message}</span>}
+        />
 
         <label htmlFor='password'>Password</label>
         <input type='password' {...register('password')} />
