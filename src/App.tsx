@@ -4,13 +4,17 @@ import './App.css';
 
 function App() {
 
-  const { register } = useForm()
+  const { register, handleSubmit } = useForm();
+
+  const onSubmit = handleSubmit((data) => {
+    console.log(data)
+  })
 
   return (
     <div>
       <h1>Tutorial React Hook Form</h1>
 
-      <form className='card'>
+      <form className='card' onSubmit={onSubmit}>
 
         <label htmlFor='name'>Name</label>
         <input type='text' {...register('name')} />
