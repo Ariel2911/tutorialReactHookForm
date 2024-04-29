@@ -49,7 +49,6 @@ function App() {
           render={({ message }) => <span>{message}</span>}
         />
 
-
         <label htmlFor='emain'>Email</label>
         <input
           type='email'
@@ -84,7 +83,31 @@ function App() {
         <input type='password' {...register('confirmPassword')} />
 
         <label htmlFor='birddate'>Birddate</label>
-        <input type='date' {...register('birddate')} />
+        <input
+          type='date'
+          {...register('birddate', {
+            required: 'Birddate is required',
+            validate: (value) => {
+              const birthdate = new Date(value);
+              const currentDate = new Date();
+
+              if (
+                (currentDate.getFullYear() - birthdate.getFullYear()) >= 18
+                &&
+                (currentDate.getMonth() - birthdate.getMonth()) >= 0
+                &&
+                (currentDate.getDate() - birthdate.getDate()) > 0
+              ) return true;
+
+              return 'You must be over 18 years old'
+            }
+          })}
+        />
+        <ErrorMessage
+          errors={errors}
+          name="birddate"
+          render={({ message }) => <span>{message}</span>}
+        />
 
         <label htmlFor='country'>Country</label>
         <select {...register('country')}>
