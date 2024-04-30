@@ -107,13 +107,15 @@ function App() {
               const birthdate = new Date(value);
               const currentDate = new Date();
 
-              if (
-                (currentDate.getFullYear() - birthdate.getFullYear()) >= 18
-                &&
-                (currentDate.getMonth() - birthdate.getMonth()) >= 0
-                &&
-                (currentDate.getDate() - birthdate.getDate()) > 0
-              ) return true;
+              if ((currentDate.getFullYear() - birthdate.getFullYear()) > 18 && true) return true
+              if ((currentDate.getFullYear() - birthdate.getFullYear()) == 18 && true)
+              {
+                if ((currentDate.getMonth() - birthdate.getMonth()) > 0) return true
+                if ((currentDate.getMonth() - birthdate.getMonth()) == 0)
+                {
+                  if ((currentDate.getDate() - birthdate.getDate()) > 0) return true
+                }
+              }
 
               return 'You must be over 18 years old'
             }
